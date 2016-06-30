@@ -1,10 +1,10 @@
 # A simple demonstration of the k-nearest neighbors algorithm.
-# By default, using 3 attributes (thus, three dimensions).
+# By default, using 2 attributes (thus, two dimensions).
 # This can easily be changed by modifying the data at the bottom of this file.
-# Usage: ruby knn.rb <k> <attribute_1> <attribute_2> <attribute_3>
-# e.g. ruby knn.rb 3 4 5 6
-# will classify based on 3 closest neighbors to a point at 4,5,6.
-# Missing: any sort of error-checking or -handling whatsoever.
+# If you do so, also make sure to change the number of arguments accepted!
+# Usage: ruby knn.rb <k> <attribute_1> <attribute_2>
+# e.g. ruby knn.rb 3 4 5 
+# will classify based on 3 closest neighbors to a point at 4,5.
 
 # Determine Euclidean distance between two points, a and b
 # This will work for an arbitrary number of dimensions
@@ -33,19 +33,23 @@ def read_data
 end
 
 # Main execution
-p classification(ARGV[0].to_i, ARGV.slice(1..-1).map { |n| n.to_i }, read_data)
+if (ARGV.length != 3) 
+  puts "Enter four integer arguments"
+else
+  p classification(ARGV[0].to_i, ARGV.slice(1..-1).map { |n| n.to_i }, read_data)
+end
 
 # Data (3 dimensions)
 __END__
-1,1,1,elf
-1,2,1,elf
-2,1,2,elf
-0,1,1,elf
-4,3,7,elf
-2,2,3,elf
-5,5,5,gnome
-5,4,4,gnome
-1,1,3,gnome
-3,3,2,gnome
-4,4,6,gnome
-2,4,3,gnome
+1,1,elf
+1,2,elf
+2,1,elf
+0,1,elf
+4,3,elf
+2,2,elf
+5,5,gnome
+5,4,gnome
+1,1,gnome
+3,3,gnome
+4,4,gnome
+2,4,gnome
